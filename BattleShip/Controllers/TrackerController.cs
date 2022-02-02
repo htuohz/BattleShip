@@ -11,23 +11,10 @@ namespace BattleShip.Controllers
 {
     public class TrackerController:Controller
     {
-        private readonly ILogger<TrackerController> _logger;
-
-        private Board Board;
-        public TrackerController(ILogger<TrackerController> logger)
+        public Board Board;
+        public TrackerController()
         {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
+            
         }
 
         public void CreateBoard(){
@@ -84,7 +71,7 @@ namespace BattleShip.Controllers
             return "Miss";
         }
 
-        public bool hasThePlayerLostYet(){
+        public bool HasThePlayerLostYet(){
             if(this.Board == null){
                 throw new NullReferenceException("The board hasn't been created yet.");
             }
